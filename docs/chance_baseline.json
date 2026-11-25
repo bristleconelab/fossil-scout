@@ -1,0 +1,17 @@
+{
+ "rule": "random valid point counts as captured if any pixel of its 3x3 window is in the top x %",
+ "points": 20000,
+ "seed": 0,
+ "maps": {
+  "out/nd_model/prospectivity_test.tif": {
+   "top5pct": 0.149,
+   "top10pct": 0.25,
+   "top20pct": 0.385
+  },
+  "out/nd_model/prospectivity.tif": {
+   "top5pct": 0.129,
+   "top10pct": 0.225,
+   "top20pct": 0.362
+  }
+ }
+}

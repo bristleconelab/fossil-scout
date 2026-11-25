@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+/data/*.tif
+/data/*.nc
+/out/
+.claude/
+CLAUDE.md
+.DS_Store
+.netrc
+*.env
+/data/*.geojson
+.pytest_cache/

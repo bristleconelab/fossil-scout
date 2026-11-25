@@ -1,0 +1,9 @@
+{
+ "region": "Montana (Garfield Co.)",
+ "precise_sites": 58,
+ "sites_inside_outcrop": 0.655,
+ "outcrop_share_of_area": 0.195,
+ "capture_top5_all_area": 0.448,
+ "capture_top5_outcrop_only": 0.345,
+ "targets": 77
+}

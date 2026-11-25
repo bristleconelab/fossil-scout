@@ -1,0 +1,45 @@
+{
+ "sites": 247,
+ "features": [
+  "blue",
+  "green",
+  "red",
+  "nir",
+  "swir16",
+  "swir22",
+  "elevation",
+  "slope",
+  "relief_1km",
+  "ndvi",
+  "clay",
+  "iron",
+  "bright"
+ ],
+ "cv_auc_mean": 0.828,
+ "cv_auc_folds": [
+  0.854,
+  0.961,
+  0.783,
+  0.684,
+  0.857
+ ],
+ "cv_capture": {
+  "top5pct": 0.704,
+  "top10pct": 0.765,
+  "top20pct": 0.854
+ },
+ "random_baseline": {
+  "top5pct": 0.05,
+  "top10pct": 0.1,
+  "top20pct": 0.2
+ },
+ "transfer": {
+  "stack": "data/mt_stack.tif",
+  "sites": 58,
+  "capture": {
+   "top5pct": 0.448,
+   "top10pct": 0.5,
+   "top20pct": 0.776
+  }
+ }
+}

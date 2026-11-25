@@ -1,0 +1,14 @@
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.1
+rasterio==1.5.2
+pyproj==3.8.0
+shapely==2.2.0
+geopandas==1.2.0
+matplotlib==3.11.2
+scikit-learn==1.9.1
+odc-stac==0.5.3
+pystac-client==0.9.1
+xarray==2026.9.0
+dask==2026.8.0
+requests==2.34.2
