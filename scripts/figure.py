@@ -15,7 +15,7 @@ import numpy as np
 import rasterio
 from pyproj import Transformer
 
-PRECISE = {"3", "4", "6", "seconds"}
+from train import precise
 
 
 def panel(ax, path, pbdb, title, top=0.05):
@@ -31,7 +31,7 @@ def panel(ax, path, pbdb, title, top=0.05):
     t = Transformer.from_crs(4326, crs, always_xy=True)
     pts = []
     for r in csv.DictReader(open(pbdb)):
-        if r["latlng_precision"] not in PRECISE:
+        if not precise(r):
             continue
         c, rw = ~tr * t.transform(float(r["lng"]), float(r["lat"]))
         if 1 <= rw < H - 1 and 1 <= c < W - 1 and valid[int(rw), int(c)]:

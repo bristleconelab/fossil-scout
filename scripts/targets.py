@@ -24,7 +24,7 @@ from pyproj import Transformer
 from rasterio.features import rasterize
 from scipy import ndimage
 
-PRECISE = {"3", "4", "6", "seconds"}
+from train import precise
 
 
 def main():
@@ -52,7 +52,7 @@ def main():
         c, rw = ~tr * (x, y)
         if 0 <= rw < H and 0 <= c < W:
             allpts.append((x, y))
-            if r["latlng_precision"] in PRECISE:
+            if precise(r):
                 prec.append((int(rw), int(c)))
     inside = float(np.mean([outcrop[r, c] for r, c in prec])) if prec else float("nan")
 

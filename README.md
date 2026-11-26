@@ -60,8 +60,9 @@ the capture, because about a third of the known sites fall just outside the medi
    10 %, clouds, shadows and snow masked with the scene classification layer), 20 m, bands blue, green, red, NIR, SWIR1
    and SWIR2, read with odc-stac from Earth Search on AWS. Elevation, slope and 1 km local relief from Copernicus DEM
    GLO-30.
-2. Labels: Paleobiology Database collections from the Hell Creek Formation. Of 591 collections, the 453 with precise
-   coordinates (precision 3, 4 or 6 decimals, or seconds) are used. Each site gives its 3 x 3 pixel neighbourhood;
+2. Labels: Paleobiology Database collections from the Hell Creek Formation. Of 591 collections, the 417 with precise
+   coordinates (precision 3, 4 or 6 decimals, or seconds, and not taken from the county: PBDB basis "based on
+   political unit") are used. Each site gives its 3 x 3 pixel neighbourhood;
    background pixels are sampled at random.
 3. `scripts/train.py`: gradient boosting (scikit-learn `HistGradientBoostingClassifier`) on 13 features: the six bands,
    the three terrain layers, NDVI, a clay index (SWIR1 vs SWIR2), an iron ratio (red / blue) and brightness.
@@ -114,7 +115,8 @@ Code: MIT (see `LICENSE`).
 - The North Dakota panel of the figure shows the model on its own training area, so it looks better than the
   cross-validated numbers.
 - The geologic map is medium scale; about a third of the known Montana sites fall outside its Hell Creek polygons.
-- PBDB coordinates are often generalised. Collections with coarse coordinates (138 of 591) are dropped, and the rest
+- PBDB coordinates are often generalised. Collections with coarse coordinates or a coordinate taken from
+  the county (174 of 591) are dropped, and the rest
   can still be tens of metres off.
 - A single summer composite; no field check of any prediction.
 
