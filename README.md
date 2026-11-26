@@ -20,8 +20,8 @@ clustering in Gorongosa, Mozambique). This repository tests it with training and
 
 ## Results
 
-Training area: Slope and Bowman counties, North Dakota (0.7 x 0.7 degrees, 247 sites). Test area: Garfield County,
-Montana, in the Hell Creek type area (0.7 x 0.7 degrees, 58 sites).
+Training area: Slope and Bowman counties, North Dakota (0.7 x 0.7 degrees, 221 sites). Test area: Garfield County,
+Montana, in the Hell Creek type area (0.7 x 0.7 degrees, 56 sites).
 
 A site counts as captured when any pixel of its 3 x 3 window (60 m) falls in the top x % of the area by score. With
 that rule a random point is captured more often than x %, so the table also gives the chance level measured the same
@@ -110,7 +110,7 @@ Code: MIT (see `LICENSE`).
 
 - Sampling bias. Known sites are where people have looked, often near roads and easy exposures, so the model partly
   learns "accessible badlands". A high score is not evidence of fossils.
-- One transfer test with 58 sites in one county. The numbers will move with other areas and other formations.
+- One transfer test with 56 sites in one county. The numbers will move with other areas and other formations.
 - The cross-validation folds differ widely (AUC 0.68 to 0.96); the mean hides that spread.
 - The North Dakota panel of the figure shows the model on its own training area, so it looks better than the
   cross-validated numbers.
