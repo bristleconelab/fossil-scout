@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fossil-locality prospectivity from a Sentinel-2 + terrain stack, trained on Paleobiology Database collections.
 
-Positives: PBDB collections with precise coordinates (latlng_precision 3, 4, 6 or seconds) inside the stack; each gives
+Positives: PBDB collections with precise coordinates (latlng_precision 3, 4, 6 or seconds, latlng_basis not
+"based on political unit") inside the stack; each gives
 its 3x3 pixel neighbourhood (coordinate error is tens of metres). Background: random valid pixels (presence-background).
 Model: gradient boosting on bands, indices and terrain. Validation: spatial block cross-validation (blocks of --block-km)
 and the capture curve = share of held-out sites that fall in the top 5/10/20 % of the area by predicted score.
@@ -24,6 +25,11 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import roc_auc_score
 
 PRECISE = {"3", "4", "6", "seconds"}
+COARSE_BASIS = {"based on political unit"}      # coordinate taken from the county: many decimals, wrong place
+
+
+def precise(r):
+    return r["latlng_precision"] in PRECISE and r["latlng_basis"] not in COARSE_BASIS
 
 
 def features(path):
@@ -47,7 +53,7 @@ def sites(pbdb, crs, tr, shape):
     t = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
     out = []
     for r in csv.DictReader(open(pbdb)):
-        if r["latlng_precision"] not in PRECISE:
+        if not precise(r):
             continue
         x, y = t.transform(float(r["lng"]), float(r["lat"]))
         col, row = ~tr * (x, y)
